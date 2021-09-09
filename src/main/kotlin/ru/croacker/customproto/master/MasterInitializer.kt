@@ -4,6 +4,8 @@ import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.DelimiterBasedFrameDecoder
 import io.netty.handler.codec.Delimiters
+import io.netty.handler.codec.string.StringDecoder
+import io.netty.handler.codec.string.StringEncoder
 import ru.croacker.customproto.common.decoder.EventDecoder
 import ru.croacker.customproto.common.decoder.EventEncoder
 
@@ -13,9 +15,9 @@ class MasterInitializer: ChannelInitializer<SocketChannel>() {
     override fun initChannel(ch: SocketChannel) {
         ch.pipeline()
             .addLast(DelimiterBasedFrameDecoder(128, *Delimiters.lineDelimiter()))
-            .addLast(EventDecoder())
-            .addLast(EventEncoder())
-            .addLast(MasterChannelHandler())
+            .addLast(StringDecoder())
+            .addLast(StringEncoder())
+            .addLast(StringAdapterHandler())
     }
 
 }
