@@ -51,13 +51,13 @@ class Marshaller {
 
 
     private fun toMessage(event: Acknowledgment): String =
-        "1=1;2=${event.messageId()};3=${event.sender()};4=${event.sourceId}\n"
+        "1=1;2=${event.messageId()};3=${event.sender()};4=${event.sourceId}"
 
     private fun toMessage(event: Heartbeat): String =
-        "1=0;2=${event.messageId()};3=${event.sender()};5=${event.timestamp}\n"
+        "1=0;2=${event.messageId()};3=${event.sender()};5=${event.timestamp}"
 
     private fun toMessage(event: Order): String =
-        "1=20;2=${event.messageId()};3=${event.sender()};20=${event.description}\n"
+        "1=20;2=${event.messageId()};3=${event.sender()};20=${event.description}"
 
     private fun getType(str: String): Int{
         val a = str.split(";")[0].split("=")

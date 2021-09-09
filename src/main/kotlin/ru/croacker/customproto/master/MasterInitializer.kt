@@ -12,7 +12,6 @@ class MasterInitializer: ChannelInitializer<SocketChannel>() {
     @Throws(Exception::class)
     override fun initChannel(ch: SocketChannel) {
         ch.pipeline()
-            .addLast(DelimiterBasedFrameDecoder(128, *Delimiters.lineDelimiter()))
             .addLast(EventDecoder())
             .addLast(EventEncoder())
             .addLast(MasterChannelHandler())
