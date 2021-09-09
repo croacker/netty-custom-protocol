@@ -10,7 +10,7 @@ class MasterNode {
 
     fun start() {
         val parent = NioEventLoopGroup(1)
-        val child = NioEventLoopGroup(10)
+        val child = NioEventLoopGroup(1)
         try {
             ServerBootstrap()
                 .group(parent, child)
