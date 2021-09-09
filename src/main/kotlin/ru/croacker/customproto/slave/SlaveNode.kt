@@ -13,8 +13,10 @@ private const val HOST = "127.0.0.1"
 private const val PORT = 9999
 
 class SlaveNode {
-    val name = UUID.randomUUID().toString()
     private val factory = EventFactory
+
+    val name = UUID.randomUUID().toString()
+
     val scheduler = Executors.newScheduledThreadPool(2)
 
     fun start() {
@@ -28,19 +30,6 @@ class SlaveNode {
 
             schedule(1) { sendHeartBeat(channel) }
             schedule(5) { sendOrder(channel) }
-//            scheduler.scheduleAtFixedRate(
-//                    { sendHeartBeat(channel) },
-//                    5,
-//                    1,
-//                    TimeUnit.SECONDS
-//                )
-
-//            scheduler.scheduleAtFixedRate(
-//                    { sendOrder(channel) },
-//                    5,
-//                    15,
-//                    TimeUnit.SECONDS
-//                )
 
             channel.closeFuture().sync()
         } finally {
