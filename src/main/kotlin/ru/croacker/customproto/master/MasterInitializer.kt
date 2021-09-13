@@ -6,8 +6,6 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder
 import io.netty.handler.codec.Delimiters
 import io.netty.handler.codec.string.StringDecoder
 import io.netty.handler.codec.string.StringEncoder
-import ru.croacker.customproto.common.decoder.EventDecoder
-import ru.croacker.customproto.common.decoder.EventEncoder
 
 class MasterInitializer: ChannelInitializer<SocketChannel>() {
 

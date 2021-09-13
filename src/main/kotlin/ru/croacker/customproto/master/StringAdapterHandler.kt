@@ -1,6 +1,5 @@
 package ru.croacker.customproto.master
 
-import io.netty.channel.ChannelHandler
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.SimpleChannelInboundHandler
 import io.netty.channel.group.ChannelGroup

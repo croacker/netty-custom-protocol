@@ -9,18 +9,16 @@ private const val PORT = 9999
 class MasterNode {
 
     fun start() {
-        val parent = NioEventLoopGroup(1)
-        val child = NioEventLoopGroup(1)
+        val group = NioEventLoopGroup(1)
         try {
             ServerBootstrap()
-                .group(parent, child)
+                .group(group)
                 .channel(NioServerSocketChannel::class.java)
                 .childHandler(MasterInitializer())
                 .bind(PORT).sync()
                 .channel().closeFuture().sync()
         } finally {
-            parent.shutdownGracefully()
-            child.shutdownGracefully()
+            group.shutdownGracefully()
         }
     }
 
