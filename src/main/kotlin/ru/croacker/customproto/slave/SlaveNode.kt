@@ -28,20 +28,6 @@ class SlaveNode {
 
             schedule(1) { sendHeartBeat(channel) }
             schedule(5) { sendOrder(channel) }
-//            scheduler.scheduleAtFixedRate(
-//                    { sendHeartBeat(channel) },
-//                    5,
-//                    1,
-//                    TimeUnit.SECONDS
-//                )
-
-//            scheduler.scheduleAtFixedRate(
-//                    { sendOrder(channel) },
-//                    5,
-//                    15,
-//                    TimeUnit.SECONDS
-//                )
-
             channel.closeFuture().sync()
         } finally {
             group.shutdownGracefully()
